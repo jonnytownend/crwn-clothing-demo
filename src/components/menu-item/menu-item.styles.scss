@@ -4,12 +4,15 @@
     position: relative;
     display: flex;
     flex: 1 1 auto;
+    flex-grow: 1;
     justify-content: center;
     border: 1px solid grey;
     min-width: 30%;
     padding: 90px 0px;
     margin: 0 $spacing ($spacing * 2);
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
 
     &:hover {
         cursor: pointer;
