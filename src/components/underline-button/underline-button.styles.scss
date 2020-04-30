@@ -1,0 +1,20 @@
+.underline-button {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 10px;
+    padding: 10px;
+
+    &:hover {
+        & .underline {
+            width: 100%;
+        }
+    }
+
+    .underline {
+        width: 0;
+        height: 2px;
+        background-color: black;
+        transition: width 0.3s;
+    }
+}
