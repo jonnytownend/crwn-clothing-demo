@@ -1,0 +1,49 @@
+@mixin shadow {
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.28);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.28);
+}
+
+.header {
+    display: flex;
+    background-color: white;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 130px;
+    height: 8rem;
+    z-index: 1000;
+
+    .logo-container .logo {
+        transition: filter 0.3s;
+
+        &:hover {
+            filter: invert(100%);
+        }
+    }
+
+    .links-container {
+        display: flex;
+
+        .option {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            margin-left: 30px;
+            padding: 10px;
+
+            &:hover {
+                & .underline {
+                    width: 100%;
+                }
+            }
+        }
+
+        .underline {
+            width: 0;
+            height: 2px;
+            background-color: black;
+            transition: width 0.3s;
+        }
+    }
+}
