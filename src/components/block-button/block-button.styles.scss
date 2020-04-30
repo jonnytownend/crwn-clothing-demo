@@ -1,0 +1,22 @@
+$primary-color: white;
+$secondary-color: black;
+
+.block-button {
+    border: none;
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: 1px solid $secondary-color;
+    padding: 20px;
+    outline: none;
+    font-weight: bold;
+
+    &:hover, &:focus {
+        cursor: pointer;
+        background-color: $secondary-color;
+        color: $primary-color;
+    }
+
+    &:active {
+        border: 1px solid rgb(36, 36, 36);
+    }
+}
