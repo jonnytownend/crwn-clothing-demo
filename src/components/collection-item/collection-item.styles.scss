@@ -38,12 +38,13 @@
         right: 50%;
         top: 80%;
         width: 60%;
-        padding: 10px 20px;
-        background-color: white;
         opacity: 0.8;
-        text-align: center;
         visibility: hidden;
-        font-weight: bold;
+        border: none;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     &:hover {
