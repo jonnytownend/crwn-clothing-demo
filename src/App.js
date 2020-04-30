@@ -1,8 +1,11 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import './App.css';
+
+import Header from './components/header/header.component'
 import HomePage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shop/shop.component'
+import SignInPage from './pages/sign-in/sign-in-page.component'
 
 const Test = ({match}) => {
   if (match.params.testId) {
@@ -14,12 +17,16 @@ const Test = ({match}) => {
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/shop' component={ShopPage} />
-      </BrowserRouter> 
-    </div>
+    <BrowserRouter>
+      <div className='app-content'>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route path='/sign-in' component={SignInPage} />
+        </Switch> 
+      </div>
+    </BrowserRouter>
   );
 }
 
