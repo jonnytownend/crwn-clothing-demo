@@ -1,12 +1,12 @@
 import React from 'react'
 import './text-input.styles.scss'
 
-const Input = ({name, value, ...props}) => (
+const Input = ({name, value, label, validateMessage, ...props}) => (
     <div className='input'>
         <input name={name} value={value} {...props} />
-        {/* <span className='name-text'>{name}</span> */}
-        <label className={`label ${value === '' ? '' : 'label-shrunk'}`}>{name ? name : 'Enter...'}</label>
+        <label className={`label ${value === '' ? '' : 'label-shrunk'}`}>{label ? label : 'Enter...'}</label>
         <div className='divider'></div>
+        {validateMessage ? <div className='validate-message'>{validateMessage}</div> : null}
     </div>
 )
 
