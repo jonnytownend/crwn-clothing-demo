@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { Link } from 'react-router-dom'
 import './underline-button.styles.scss'
 
-const UnderlineButton = ({text, link, className}) => (
-    <div className={className}>
-        <Link to={link} className='underline-button'>
-            {text.toUpperCase()}
+const UnderlineButton = ({className, children, onClick}) => (
+    <div className={className} onClick={onClick}>
+        <div className='underline-button'>
+            {children}
             <div className='underline'></div>
-        </Link>
+        </div>
     </div>
 )
 
