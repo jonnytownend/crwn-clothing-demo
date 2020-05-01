@@ -36,12 +36,12 @@ export default class SignIn extends React.Component {
                 <span>Sign in with your email and password</span>
 
                 <form className='form' onSubmit={this.handleSubmit}>
-                    <Input onChange={this.handleChange} name='email' type='email' value={this.state.email} required />
-                    <Input onChange={this.handleChange} name='password' type='password' value={this.state.password} required />
+                    <Input onChange={this.handleChange} name='email' type='email' label='email' value={this.state.email} required />
+                    <Input onChange={this.handleChange} name='password' type='password' label='password' value={this.state.password} required />
                     
                     <div className='buttons-div'>
                         <BlockButton type='submit' value='Submit Form' />
-                        <BlockButton onClick={signInWithGoogle} value='Sign In with Google' />
+                        <BlockButton hoverColor='rgb(20, 123, 249)' onClick={signInWithGoogle} value='Sign In with Google' />
                     </div>
                 </form>
             </div>
