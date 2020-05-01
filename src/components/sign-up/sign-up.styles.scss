@@ -1,0 +1,29 @@
+.sign-up {
+    .form {
+        display: flex;
+        flex-flow: column;
+        margin-top: 50px;
+
+        & > * {
+            margin-bottom: 50px;
+        }
+
+        .buttons-div {
+            display: flex;
+            flex-wrap: wrap;
+
+            $margin: 5px;
+
+            & * {
+                flex-basis: 0;
+                margin-right: $margin;
+                min-width: 11rem;
+                margin-bottom: $margin;
+            }
+
+            &:last-child {
+                margin-right: -$margin;
+            }
+        }
+    }
+}
