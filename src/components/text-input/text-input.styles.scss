@@ -4,6 +4,20 @@
     top: -14px;
 }
 
+@keyframes label-shake-animation {
+    $amount: 5px;
+    0% {transform: translate(0);}
+    25% {transform: translate($amount);}
+    50% {transform: translate(-$amount);}
+    75% {transform: translate($amount);}
+    100% {transform: translate(0);}
+}
+
+.showShake {
+    animation-name: label-shake-animation;
+    animation-duration: 0.3s;
+}
+
 .input {
     position: relative;
 

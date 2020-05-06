@@ -13,6 +13,7 @@ export default class SignUp extends React.Component {
         this.state = {
             displayName: '',
             email: '',
+            emailValid: true,
             password: '',
             confirmPassword: '',
             passwordsMatch: true
@@ -22,17 +23,27 @@ export default class SignUp extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault()
 
-        const {displayName, email, password, confirmPassword, passwordsMatch} = this.state
+        const {displayName, email, password, confirmPassword} = this.state
 
         const newPasswordsMatch = (password === confirmPassword)
+        const newEmailValid = email.includes('@') && email.includes('.')
+
+        if (!newPasswordsMatch || !newEmailValid) {
+            this.setState({
+                emailValid: newEmailValid,
+                passwordsMatch: newPasswordsMatch
+            })
+            return
+        }
+
         this.setState({
-            displayName: newPasswordsMatch? '' : displayName,
-            email: newPasswordsMatch ? '' : email,
-            password: newPasswordsMatch ? '' : password,
-            confirmPassword: newPasswordsMatch ? '' : confirmPassword,
-            passwordsMatch: newPasswordsMatch
+            displayName: '',
+            email: '',
+            emailValid: true,
+            password: '',
+            confirmPassword: '',
+            passwordsMatch: true
         })
-        if (!newPasswordsMatch) return
 
         try {
             const { user } = await auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -66,8 +77,24 @@ export default class SignUp extends React.Component {
 
                 <form className='form' onSubmit={this.handleSubmit}>
                     <Input onChange={this.handleChange} name='displayName' label='display name' value={this.state.displayName} required />
-                    <Input onChange={this.handleChange} name='email' type='email' label='email' value={this.state.email} required />
-                    <Input onChange={this.handleChange} name='password' type='password' label='password' value={this.state.password} required />
+                    <Input
+                        onChange={this.handleChange}
+                        name='email'
+                        type='email'
+                        label='email'
+                        value={this.state.email}
+                        validateMessage={this.state.emailValid ? null : 'Email must be valid'}
+                        showShake={!this.state.emailValid}
+                        required />
+                    <Input
+                        onChange={this.handleChange}
+                        name='password' type='password'
+                        label='password'
+                        value={this.state.password}
+                        validateMessage={this.state.passwordsMatch ? null : "Passwords don't match"}
+                        showShake={!this.state.passwordsMatch}
+                        required
+                    />
                     <Input
                         onChange={this.handleChange}
                         name='confirmPassword'
@@ -75,6 +102,7 @@ export default class SignUp extends React.Component {
                         label='confirm password'
                         value={this.state.confirmPassword}
                         validateMessage={this.state.passwordsMatch ? null : "Passwords don't match"}
+                        showShake={!this.state.passwordsMatch}
                         required
                     />
                     

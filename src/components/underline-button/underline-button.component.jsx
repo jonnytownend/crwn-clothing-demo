@@ -1,5 +1,4 @@
-import React, { Children } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import './underline-button.styles.scss'
 
 const UnderlineButton = ({className, children, onClick}) => (

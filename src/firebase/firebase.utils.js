@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
@@ -12,27 +12,6 @@ firebase.initializeApp({
   appId: "1:209986059281:web:cc78e6ff50a2e1b81505b0",
   measurementId: "G-V51H5CWN6M"
 })
-
-// export const createUserProfileDocument = (userAuth) => {
-//   if (!userAuth) return
-
-//   const userRef = firestore.collection('users').doc(userAuth.uid)
-//   userRef.get().then((snapshot) => {
-//     if (snapshot.exists) return
-
-//     const { displayName, email } = userAuth
-//     const createdAt = new Date()
-//     userRef.set({
-//       displayName,
-//       email,
-//       createdAt
-//     }).catch(error => {
-//       console.error('Error setting new user: ', error)
-//     })
-//   }).catch(error => {
-//     console.error('Error accessing database: ', error)
-//   })
-// }
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return

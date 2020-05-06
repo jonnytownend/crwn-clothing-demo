@@ -1,17 +1,6 @@
 import React from 'react'
 import './block-button.styles.scss'
 
-// const BlockButton = ({type, value, className, backgroundColor, ...props}) => {
-//     return (
-//         <button
-//             className={`block-button ${className}`}
-//             type={type ? type : 'button'}
-//             {...props}>
-//                 {value.toUpperCase()}
-//         </button>
-//     )
-// }
-
 class BlockButton extends React.Component {
     constructor(props) {
         super(props)
@@ -37,7 +26,7 @@ class BlockButton extends React.Component {
             border: this.state.hoverOrFocus ? `1px solid ${hoverColor}` : null,
         }
 
-        const {type, value, className, ...props} = this.props
+        const {type, value, className, onClick} = this.props
         return (
             <button
                 className={`block-button ${className}`}
@@ -46,8 +35,8 @@ class BlockButton extends React.Component {
                 onMouseLeave={this.onLeaveHoverOrFocus}
                 onFocus={this.onHoverOrFocus}
                 onBlur={this.onLeaveHoverOrFocus}
-                style={style}
-                {...props}>
+                onClick={onClick}
+                style={style}>
                     {value.toUpperCase()}
             </button>
         )

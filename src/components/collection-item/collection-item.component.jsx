@@ -1,6 +1,5 @@
 import React from 'react'
 import './collection-item.styles.scss'
-import UnderlineButton from '../../components/underline-button/underline-button.component'
 import BlockButton from '../../components/block-button/block-button.component'
 
 const CollectionItem = ({ id, name, price, imageUrl }) => (
