@@ -1,28 +1,27 @@
 import React from 'react'
 import './cart-dropdown.styles.scss'
 
+import { connect } from 'react-redux'
+
 import BlockButton from '../block-button/block-button.component'
+import CartItem from '../cart-item/cart-item.component'
 
-const CartDropdownItem = ({item}) => (
-    <div className='cart-item'>
-        <div className='item-content'>
-            <div className='item-image' style={{backgroundImage: `url(${item.imageUrl}`}} />
-            <div className='item-details'>
-                <h3 className='item-title'>{item.name}</h3>
-                <span className='item-price'>{`1 x £${item.price}`}</span>
-            </div>
-        </div>
-        <div className='divider' />
-    </div>
-)
-
-const CartDropdown = ({items}) => (
+const CartDropdown = ({cartItems}) => (
     <div className='cart-dropdown'>
         <div className='cart-items'>
-            {items.map((item, index) => <CartDropdownItem key={index} item={item}/>)}
+            {cartItems.map((item, index) =>
+                <div>
+                    <CartItem key={index} item={item}/>
+                    <div className='divider' />
+                </div>
+            )}
         </div>
         <BlockButton value='Checkout' />
     </div>
 )
 
-export default CartDropdown
+const mapPropsToState = (state) => ({
+    cartItems: state.cart.cartItems
+})
+
+export default connect(mapPropsToState)(CartDropdown)

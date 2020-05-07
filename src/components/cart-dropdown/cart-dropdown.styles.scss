@@ -17,34 +17,6 @@
         }
     }
 
-    .item-content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .item-image {
-            $size: 90px;
-            min-width: $size;
-            height: $size;
-            background-size: cover;
-        }
-
-        .item-details {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            justify-content: space-between;
-
-            .item-title {
-                margin: 0;
-            }
-
-            .item-price {
-                color: grey;
-            }
-        }
-    }
-
     .divider {
         background-color: lightgrey;
         width: 100%;

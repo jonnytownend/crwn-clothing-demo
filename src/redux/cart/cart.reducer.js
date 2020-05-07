@@ -15,7 +15,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             }
         case CartActionTypes.ADD_ITEM:
             const newItem = action.payload
-            const currentItemCount = state.cartItems.filter(item => item.id === newItem.id).length
+            const currentItemCount = state.cartItems.map(item => (item.id === newItem.id) ? item.quantity : 0).reduce((a, b) => a+b, 0)
             const itemWithCount = {...action.payload, quantity: currentItemCount + 1}
             return {
                 ...state,
