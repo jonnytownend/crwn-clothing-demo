@@ -12,9 +12,13 @@ const CartDropdown = ({cartItems}) => (
             {cartItems.map((item, index) =>
                 <div>
                     <CartItem key={index} item={item}/>
-                    <div className='divider' />
+                    <div key={index} className='divider' />
                 </div>
             )}
+        </div>
+        <div className='total'>
+            <span>Total</span>
+            <span className='price'>{`£${cartItems.map(item => item.quantity * item.price).reduce((a,b) => a+b, 0)}`}</span>
         </div>
         <BlockButton value='Checkout' />
     </div>
