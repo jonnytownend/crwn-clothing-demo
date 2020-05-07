@@ -1,6 +1,18 @@
+@keyframes shake {
+    $rotation: 10deg;
+    0% {transform: rotate(0);}
+    25% {transform: rotate($rotation);}
+    50% {transform: rotate(-$rotation);}
+    75% {transform: rotate($rotation);}
+    100% {transform: rotate(0);}
+}
+
 .cart-icon {
     position: relative;
+    user-select: none;
     width: 28px;
+    animation-duration: 0.3s;
+    transition: transform 0.2s;
 
     .item-count {
         position: absolute;
@@ -9,5 +21,10 @@
         transform: translate(-50%, -50%);
         font-size: 0.7rem;
         font-weight: bold;
+    }
+
+    &:hover {
+        // animation-name: shake;
+        transform: scale(1.1) rotate(10deg);
     }
 }
