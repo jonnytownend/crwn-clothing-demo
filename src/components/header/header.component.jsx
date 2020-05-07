@@ -35,9 +35,9 @@ const Header = ({currentUser, hidden}) => (
                         <UnderlineButton>SIGN IN</UnderlineButton>
                     </Link>
                 }
-                <CartIcon items={SHOP_DATA[0].items} />
+                <CartIcon />
                 {
-                    hidden ? null : <CartDropdown className='cart-dropdown' items={SHOP_DATA[0].items} />
+                    hidden ? null : <CartDropdown className='cart-dropdown' items={[]} />
                 }
             </div>
         </div>
