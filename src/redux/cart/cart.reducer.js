@@ -1,7 +1,9 @@
 import CartActionTypes from './cart.types'
+import { act } from 'react-dom/test-utils'
 
 const INITIAL_STATE = {
-    hidden: true
+    hidden: true,
+    cartItems: []
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -9,7 +11,15 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.TOGGLE_CART_HIDDEN:
             return {
                 ...state,
-                hidden: !state.hidden
+                hidden: (state.cartItems.length === 0) ? true : !state.hidden
+            }
+        case CartActionTypes.ADD_ITEM:
+            const newItem = action.payload
+            const currentItemCount = state.cartItems.filter(item => item.id === newItem.id).length
+            const itemWithCount = {...action.payload, quantity: currentItemCount + 1}
+            return {
+                ...state,
+                cartItems: [...state.cartItems.filter(item => item.id !== newItem.id), itemWithCount]
             }
         default:
             return state;
