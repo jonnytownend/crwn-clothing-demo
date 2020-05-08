@@ -2,6 +2,9 @@ import React from 'react'
 import './header.styles.scss'
 
 import { auth } from '../../firebase/firebase.utils'
+import { createStructuredSelector } from 'reselect'
+import { selectCartHidden } from '../../redux/cart/cart.selectors'
+import { selectCurrentUser } from '../../redux/user/user.selectors'
 
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -12,7 +15,7 @@ import UnderlineButton from '../../components/underline-button/underline-button.
 
 import SHOP_DATA from '../../data/shop.data'
 
-const Header = ({currentUser, hidden}) => (
+const Header = ({currentUser, hidden, resetState}) => (
     <div>
         <div className='header'>
             <div className='logo-container'>
@@ -44,9 +47,9 @@ const Header = ({currentUser, hidden}) => (
     </div>
 )
 
-const mapStateToProps = ({user, cart}) => ({
-    currentUser: user.currentUser,
-    hidden: cart.hidden
+const mapStateToProps = (state) => createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden
 })
 
 export default connect(mapStateToProps)(Header)

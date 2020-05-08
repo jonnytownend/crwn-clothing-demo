@@ -1,0 +1,39 @@
+$spacing: 40px;
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > * {
+        flex: 4 4 0;
+        margin-right: $spacing;
+
+        &:last-child {
+            text-align: right;
+            flex: 1 1 0;
+            margin-right: 0;
+        }
+    }
+}
+
+.checkout-header {
+    font-size: 1.5rem;
+}
+
+.checkout-footer {
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .empty-cart-text {
+        font-size: 3rem;
+        margin: 70px 0;
+    }
+}

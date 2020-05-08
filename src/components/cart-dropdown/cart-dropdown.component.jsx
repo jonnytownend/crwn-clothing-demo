@@ -2,12 +2,13 @@ import React from 'react'
 import './cart-dropdown.styles.scss'
 
 import { connect } from 'react-redux'
-import { selectCartItems } from '../../redux/cart/cart.selectors'
+import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors'
 
 import BlockButton from '../block-button/block-button.component'
 import CartItem from '../cart-item/cart-item.component'
+import { Link } from 'react-router-dom'
 
-const CartDropdown = ({cartItems}) => (
+const CartDropdown = ({cartItems, cartTotal}) => (
     <div className='cart-dropdown'>
         <div className='cart-items'>
             {cartItems.map((item, index) =>
@@ -17,16 +18,22 @@ const CartDropdown = ({cartItems}) => (
                 </div>
             )}
         </div>
-        <div className='total'>
+        {cartItems.length === 0 ?
+        <h3 className='empty-message'>Your cart is empty</h3> :
+        (<div className='total'>
             <span>Total</span>
-            <span className='price'>{`£${cartItems.map(item => item.quantity * item.price).reduce((a,b) => a+b, 0)}`}</span>
+            <span className='price'>{`£${cartTotal}`}</span>
         </div>
-        <BlockButton value='Checkout' />
+        )}
+        <Link to='/checkout'>
+            <BlockButton className='checkout-button' value='Checkout' />
+        </Link>
     </div>
 )
 
 const mapPropsToState = (state) => ({
-    cartItems: selectCartItems(state)
+    cartItems: selectCartItems(state),
+    cartTotal: selectCartTotal(state)
 })
 
 export default connect(mapPropsToState)(CartDropdown)
