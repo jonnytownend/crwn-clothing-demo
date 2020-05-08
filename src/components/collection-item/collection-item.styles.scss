@@ -15,16 +15,16 @@
 
     .image {
         background-size: cover;
-        transition: filter 0.5s;
         height: 100%;
         margin-bottom: 10px;
+        transition: filter 0.6s;
 
         .overlay {
             width: 100%;
             height: 100%;
             background-color: white;
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.6s;
         }
     }
 
@@ -53,12 +53,12 @@
             visibility: inherit;
         }
 
-        & .image .overlay {
-            opacity: 0.1;
+        & .image {
+            filter: sepia(20%);
         }
 
-        & .image {
-            filter: grayscale(100%);
+        & .image .overlay {
+            opacity: 0.1;
         }
     }
 }

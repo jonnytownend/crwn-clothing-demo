@@ -14,7 +14,7 @@ const CheckoutItem = ({item, addItem, removeItem, removeAllItemsOf, className}) 
             <button className='quantity-button' onClick={() => addItem(item)}>{'+'}</button>
         </div>
         <span className='price'>{`£${item.price}`}</span>
-        <button className='remove-button' onClick={() => removeAllItemsOf(item)}>X</button>
+        <button className='remove-button' onClick={() => removeAllItemsOf(item)}>&#10005;</button>
     </div>
 )
 

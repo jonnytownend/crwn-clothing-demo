@@ -6,10 +6,9 @@ import './App.css';
 
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from './redux/user/user.selectors'
-import { rootResetState } from './redux/root.reducer'
+import { rootResetState, stepThroughTime, globalUndo } from './redux/root.reducer'
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
-// import { firestore } from './firebase/firebase.utils'
 
 import Header from './components/header/header.component'
 import HomePage from './pages/homepage/homepage.component'
@@ -22,7 +21,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null
 
   componentDidMount() {
-    const { setCurrentUser } = this.props
+    const { setCurrentUser, history } = this.props
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       console.log('userAuth:', userAuth)
@@ -44,10 +43,29 @@ class App extends React.Component {
     this.unsubscribeFromAuth()
   }
 
+  handlePlayActions = () => {
+    const { stepThroughTime } = this.props
+    const firstStateTime = this.props.history[0].timestamp
+    this.props.history.forEach((historicState, index) => {
+      const timeDiff = (historicState.timestamp.getTime() - firstStateTime.getTime())
+      setTimeout(() => {
+        stepThroughTime(index)
+      }, timeDiff)
+    })
+  }
+
+  undo = () => {
+    this.props.globalUndo()
+  }
+
   render() {
     return (
       <div className='app-content'>
-        <button style={{position: 'absolute'}} onClick={() => this.props.resetState()}>Reset state</button>
+        <div style={{position: 'absolute'}}>
+          <button onClick={() => this.props.resetState()}>Reset state</button>
+          <button onClick={this.handlePlayActions}>Play actions</button>
+          <button onClick={this.undo}>Undo</button>
+        </div>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -60,13 +78,16 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+const mapStateToProps = (state) => ({
+  history: state.history,
+  currentUser: selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-  resetState: () => dispatch(rootResetState())
+  resetState: () => dispatch(rootResetState()),
+  stepThroughTime: (index) => dispatch(stepThroughTime(index)),
+  globalUndo: () => dispatch(globalUndo())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

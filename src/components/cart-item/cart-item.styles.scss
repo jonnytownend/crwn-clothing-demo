@@ -20,6 +20,13 @@
             margin: 0;
         }
 
+        .change-quantity {
+            .quantity-button {
+                border: none;
+                font-size: 1.5rem;
+            }
+        }
+
         .item-price {
             color: grey;
         }

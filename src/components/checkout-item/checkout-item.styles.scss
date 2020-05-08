@@ -28,6 +28,14 @@ $spacing: 40px;
         font-size: 30px;
         font-weight: bolder;
     }
+
+    button {
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
 }
 
 .divider {

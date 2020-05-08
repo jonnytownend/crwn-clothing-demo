@@ -3,12 +3,13 @@ import './cart-dropdown.styles.scss'
 
 import { connect } from 'react-redux'
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors'
+import { toggleCartHidden } from '../../redux/cart/cart.actions'
 
 import BlockButton from '../block-button/block-button.component'
 import CartItem from '../cart-item/cart-item.component'
 import { Link } from 'react-router-dom'
 
-const CartDropdown = ({cartItems, cartTotal}) => (
+const CartDropdown = ({cartItems, cartTotal, dispatch}) => (
     <div className='cart-dropdown'>
         <div className='cart-items'>
             {cartItems.map((item, index) =>
@@ -25,7 +26,7 @@ const CartDropdown = ({cartItems, cartTotal}) => (
             <span className='price'>{`£${cartTotal}`}</span>
         </div>
         )}
-        <Link to='/checkout'>
+        <Link to='/checkout' onClick={() => dispatch(toggleCartHidden())}>
             <BlockButton className='checkout-button' value='Checkout' />
         </Link>
     </div>
