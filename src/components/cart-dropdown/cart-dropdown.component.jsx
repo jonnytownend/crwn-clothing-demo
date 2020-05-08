@@ -2,6 +2,7 @@ import React from 'react'
 import './cart-dropdown.styles.scss'
 
 import { connect } from 'react-redux'
+import { selectCartItems } from '../../redux/cart/cart.selectors'
 
 import BlockButton from '../block-button/block-button.component'
 import CartItem from '../cart-item/cart-item.component'
@@ -10,9 +11,9 @@ const CartDropdown = ({cartItems}) => (
     <div className='cart-dropdown'>
         <div className='cart-items'>
             {cartItems.map((item, index) =>
-                <div>
+                <div key={index}>
                     <CartItem key={index} item={item}/>
-                    <div key={index} className='divider' />
+                    <div key={index+1000} className='divider' />
                 </div>
             )}
         </div>
@@ -25,7 +26,7 @@ const CartDropdown = ({cartItems}) => (
 )
 
 const mapPropsToState = (state) => ({
-    cartItems: state.cart.cartItems
+    cartItems: selectCartItems(state)
 })
 
 export default connect(mapPropsToState)(CartDropdown)
