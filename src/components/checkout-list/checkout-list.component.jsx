@@ -22,12 +22,8 @@ const CheckoutCollection = ({items, total}) => (
                 {index === items.length-1 ? (<div className='divider' />) : null}
             </div>
         )}
-        <div className='table-row checkout-footer'>
-            <span>Total</span>
-            <span></span>
-            <span></span>
-            <span className='price'>{`£${total}`}</span>
-            <span></span>
+        <div className='checkout-footer'>
+            {`Total: £${total}`}
         </div>
     </div>
 )
