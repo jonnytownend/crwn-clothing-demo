@@ -1,6 +1,12 @@
 import {createSelector } from 'reselect'
+import { store } from '../store'
+import { selectCurrentUser } from '../user/user.selectors'
+import { selectCurrentState } from '../root.selectors'
 
-const selectCart = (state) => state.currentState.cart
+const selectCart = createSelector(
+    [selectCurrentState],
+    (currentState) => currentState.cart
+)
 
 export const selectCartItems = createSelector(
     [selectCart],

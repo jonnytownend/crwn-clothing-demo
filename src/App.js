@@ -6,7 +6,7 @@ import './App.css';
 
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from './redux/user/user.selectors'
-import { rootResetState, stepThroughTime, globalUndo } from './redux/root.reducer'
+import { rootResetState, stepThroughTime, globalUndo } from './redux/history/history.actions'
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
