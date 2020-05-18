@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { selectCurrentState } from '../root.selectors'
+import { selectCurrentState } from '../history/history.selectors'
 
 const selectUser = createSelector(
     [selectCurrentState],

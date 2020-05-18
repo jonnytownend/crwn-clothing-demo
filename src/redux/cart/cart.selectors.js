@@ -1,7 +1,7 @@
-import {createSelector } from 'reselect'
+import { createSelector } from 'reselect'
 import { store } from '../store'
 import { selectCurrentUser } from '../user/user.selectors'
-import { selectCurrentState } from '../root.selectors'
+import { selectCurrentState } from '../history/history.selectors'
 
 const selectCart = createSelector(
     [selectCurrentState],
