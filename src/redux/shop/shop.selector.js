@@ -10,3 +10,8 @@ export const selectCollection = (collectionName) => createSelector(
     [selectShopData],
     (shopData) => shopData[collectionName]
 )
+
+export const selectCollectionsAsArray = createSelector(
+    [selectShopData],
+    (shopData) => Object.keys(shopData).map(key => shopData[key])
+)

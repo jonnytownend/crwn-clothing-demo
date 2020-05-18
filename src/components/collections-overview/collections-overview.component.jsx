@@ -2,15 +2,14 @@ import React from 'react'
 import './collections-overview.styles.scss'
 import { connect } from 'react-redux'
 
-import { selectShopData } from '../../redux/shop/shop.selector'
+import { selectCollectionsAsArray } from '../../redux/shop/shop.selector'
 
 import CollectionPreview from '../../components/collection-preview/collection-preview.component'
 
-const CollectionsOverview = ({shopData}) => (
+const CollectionsOverview = ({collections}) => (
     <div>
         {
-            Object.keys(shopData).map( key => {
-                const {id, ...otherProps} = shopData[key]
+            collections.map( ({id, ...otherProps}) => {
                 return <CollectionPreview className="collection-preview" key={id} {...otherProps} />
             })
         }
@@ -18,7 +17,7 @@ const CollectionsOverview = ({shopData}) => (
 )
 
 const mapStateToProps = (state) => ({
-    shopData: selectShopData(state)
+    collections: selectCollectionsAsArray(state)
 })
 
 export default connect(mapStateToProps)(CollectionsOverview)
