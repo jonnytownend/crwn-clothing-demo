@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors'
 
 import CheckoutItem from '../checkout-item/checkout-item.component'
+import StripeButton from '../stripe-button/stripe-button.component'
 
 const CheckoutCollection = ({items, total}) => (
     <div>
@@ -23,7 +24,8 @@ const CheckoutCollection = ({items, total}) => (
             </div>
         )}
         <div className='checkout-footer'>
-            {`Total: £${total}`}
+            <span className='total'>{`Total: £${total}`}</span>
+            <StripeButton price={total} />
         </div>
     </div>
 )

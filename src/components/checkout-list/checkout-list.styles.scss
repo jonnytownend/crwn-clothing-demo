@@ -22,9 +22,15 @@ $spacing: 40px;
 }
 
 .checkout-footer {
-    font-size: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     padding-bottom: 20px;
-    text-align: right;
+
+    .total {
+        margin-right: 20px;
+        font-size: 2.5rem;
+    };
 }
 
 .empty-state {
