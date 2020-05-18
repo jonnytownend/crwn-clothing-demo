@@ -1,0 +1,20 @@
+.collection {
+    $spacing: 20px;
+
+    .title {
+        margin-left: $spacing;
+    }
+
+    .category-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        & > * {
+            flex-basis: calc(25% - #{2 * $spacing});
+            flex-grow: 0;
+            margin: $spacing $spacing;
+            min-width: 300px;
+        }
+    }
+}
