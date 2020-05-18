@@ -15,4 +15,4 @@ const EmptyState = () => (
     </div>
 )
 
-export default EmptyState
+export default connect()(EmptyState)

@@ -13,8 +13,6 @@ import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import UnderlineButton from '../../components/underline-button/underline-button.component'
 
-import SHOP_DATA from '../../data/shop.data'
-
 const Header = ({currentUser, hidden, resetState}) => (
     <div>
         <div className='header'>
