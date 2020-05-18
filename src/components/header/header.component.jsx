@@ -25,7 +25,7 @@ const Header = ({currentUser, hidden, resetState}) => (
                 {currentUser ? <span>{`Hello ${currentUser.displayName}`}</span> : null}
             </div>
             <div className='links-container'>
-                <Link to='shop'>
+                <Link to='/shop'>
                     <UnderlineButton>SHOP</UnderlineButton>
                 </Link>
                 <Link to='contact'>

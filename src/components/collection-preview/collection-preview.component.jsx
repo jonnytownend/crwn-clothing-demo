@@ -1,8 +1,15 @@
 import React from 'react'
-import CollectionItem from '../collection-item/collection-item.component'
 import './collection-preview.styles.scss'
 
-const CollectionPreview = ({ title, items}) => (
+import { Link, withRouter } from 'react-router-dom'
+
+import CollectionItem from '../collection-item/collection-item.component'
+import BlockButton from '../block-button/block-button.component'
+
+const CollectionPreview = ({ title, items, location}) => {
+    console.log("location: ", location)
+
+    return (
     <div className="collection-preview">
         <h1 className="title">{title.toUpperCase()}</h1>
         <div className="preview">
@@ -13,7 +20,13 @@ const CollectionPreview = ({ title, items}) => (
                 )
             }
         </div>
+        <div className='view-more-button'>
+            <Link to={`${location.pathname}/${title.toLowerCase()}`}>
+                <BlockButton value='View More' />
+            </Link>
+        </div>
     </div>
-)
+    )
+}
 
-export default CollectionPreview
+export default withRouter(CollectionPreview)

@@ -1,11 +1,24 @@
 .collection-preview {
+    margin-bottom: 100px;
+
     .title {
         font-size: 1.5rem;
     }
 
     .preview {
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-evenly;
+
+        & > * {
+            margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .view-more-button {
+        margin-top: 20px;
     }
 }
