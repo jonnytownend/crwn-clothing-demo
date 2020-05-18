@@ -8,4 +8,4 @@ const {{pascalCase name}} = () => (
     </div>
 )
 
-export default {{pascalCase name}}
+export default connect()({{pascalCase name}})
