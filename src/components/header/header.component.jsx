@@ -38,7 +38,7 @@ const Header = ({currentUser, hidden, resetState}) => (
                 }
                 <CartIcon />
                 {
-                    hidden ? null : <CartDropdown className='cart-dropdown' onBlur={() => console.log('Focus lost')} />
+                    hidden ? null : <CartDropdown className='cart-dropdown' />
                 }
             </div>
         </div>

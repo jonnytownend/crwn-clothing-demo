@@ -1,21 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { selectShopData } from '../../redux/shop/shop.selector'
+import { selectCollectionsAsArray } from '../../redux/shop/shop.selector'
 
 import MenuItem from '../menu-item/menu-item.component'
 
-const Directory = ({ directory }) => (
+const Directory = ({ collections }) => (
     <div className="directory-menu">
-        {Object.keys(directory).map( key => { 
-            const {id, items, ...sectionProps} = directory[key]
+        {collections?.map( collection => {
+            const {id, items, ...sectionProps} = collection
             return <MenuItem key={id} imageUrl={items[0].imageUrl} {...sectionProps} />
-        })}
+        })
+
+        }
+
     </div>
 )
 
 const mapStateToProps = (state) => ({
-    directory: selectShopData(state)
+    collections: selectCollectionsAsArray(state)
 })
 
 export default connect(mapStateToProps)(Directory)

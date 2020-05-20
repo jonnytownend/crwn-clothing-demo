@@ -14,11 +14,7 @@ export default class SignIn extends React.Component {
             password: ''
         }
     }
-
-    handleSubmit2 = () => {
-        console.log('Submitting...')
-    }
-
+    
     handleSubmit = async (event) => {
         event.preventDefault()
 

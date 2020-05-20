@@ -7,8 +7,6 @@ import CollectionItem from '../collection-item/collection-item.component'
 import BlockButton from '../block-button/block-button.component'
 
 const CollectionPreview = ({ title, items, location}) => {
-    console.log("location: ", location)
-
     return (
     <div className="collection-preview">
         <h1 className="title">{title.toUpperCase()}</h1>
