@@ -13,5 +13,5 @@ export const selectCollection = (collectionName) => createSelector(
 
 export const selectCollectionsAsArray = createSelector(
     [selectShopData],
-    (shopData) => Object.keys(shopData).map(key => shopData[key])
+    (shopData) => shopData ? Object.keys(shopData).map(key => shopData[key]) : null
 )
